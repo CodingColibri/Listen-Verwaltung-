@@ -1,0 +1,18 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5em 5em 5em;
+    grid-template-areas: " header" "hauptseite" " footer";
+    margin: 0%;
+    background-image: url("images/bg.jpg.jpg");
+}
+
+h1 {
+    color: white;
+    font-family: sans-serif;
+    font-size: 80px;
+    font-style: bold;
+    text-align: center;
+    opacity: 0.6;
+    ;
+}
