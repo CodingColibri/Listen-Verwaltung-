@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+  }
+
 body {
     display: grid;
     grid-template-columns: 1fr;
@@ -9,17 +13,12 @@ body {
 
 h1 {
     color: black;
-    opacity: 0.6;
-    font-family: sans-serif;
+    opacity: 0.5;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 60px;
-    font-style: bold;
-    text-align: center;
-    
+    text-align: center; 
 }
-
-* {
-    box-sizing: border-box;
-  }
 
   /* bezieht sich auf das svg Symbol  */
 .noFill {
@@ -59,14 +58,17 @@ margin: -8px 0 0 -8px;
     border-radius:10px;
     font-family: sans-serif;
     color: black;
-    opacity: 0.6;
   }
 
-  h1, h2 {
+   h2 {
     margin:0;
     text-align:center;
     text-transform:uppercase;
     font-family: cursive;
+    font-size:20px;
+    text-align:center;
+    border-bottom:1px solid white;
+    padding: 0 0 10px; 
   }
 
 #new-task{
@@ -85,20 +87,15 @@ margin: -8px 0 0 -8px;
     outline: none;
     margin-left: 2em;
 }
-  
-  h2 {
-    font-size:20px;
-    text-align:center;
-    border-bottom:1px solid white;
-    padding: 0 0 10px; 
-  }
-   /*  noch eine mögliche Farbe : #606870  */
+
+/*  noch eine mögliche Farbe : #606870  */
   .new-task-container {
     text-align:center;
     color: white;
     font-size: 90%;
     background: white;
     border:3px solid transparent;
+    opacity: 0.6; 
   }
   .new-task-container input{
     color:black;
@@ -106,14 +103,11 @@ margin: -8px 0 0 -8px;
   .new-task-container input::-webkit-input-placeholder {
     color: black;
 }
-
-
   .box {
     padding:10px 15px;
     border-radius:5px;
-    margin:15px 0;
+    margin:15px 0; 
   }
-  
   
   .todo-list {
     float:left;
@@ -156,7 +150,7 @@ margin: -8px 0 0 -8px;
     padding: 5px;
     color:grey;
     margin-top: -0.4em;
-    opacity: 0.7;
+    opacity: 0.8;
   }
  
   .delete:hover{
@@ -165,13 +159,16 @@ margin: -8px 0 0 -8px;
  
   input[type=checkbox] { 
     opacity: 0;
-    margin-left: -29.5px; }
+    margin-left: -32px;
+    margin-top: 5px;
+    width: 15px;
+    height: 15px; }
 
   input[type="checkbox"] + label::before {
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     border-radius: 15px;
-    border: 1px solid cadetblue;
+    border: 1.5px solid cadetblue;
     background-color: lightblue;
     display: block;
     content: "";
