@@ -92,8 +92,19 @@
                         }
                         /*  noch eine mögliche Farbe : #606870  */
                         
+                        #new-list {
+                            position: absolute;
+                            right: 7px;
+                            bottom: 7px;
+                            border-width: 0;
+                            outline: none;
+                            box-shadow: none;
+                            font-weight: 100;
+                            text-indent: 18px;
+                        }
+                        
                         .new-list {
-                            color: white;
+                            color: black;
                             background: white;
                             opacity: 0.6;
                             border: 3px solid transparent;
@@ -181,7 +192,9 @@
                         }
                         
                         input {
-                            color: white;
+                            color: black;
+                            opacity: 0.6;
+                            width: 300px;
                         }
                         
                         input[type=checkbox] {
