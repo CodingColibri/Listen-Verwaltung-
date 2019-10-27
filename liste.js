@@ -12,7 +12,7 @@ var addListBtn = document.querySelector('#addList')
 
 var toDoUl = document.querySelector(".todo-list ul");
 var completeUl = document.querySelector(".complete-list ul");
-var ToDoListen = document.querySelector(".listen ul")
+var ToDoListen = document.querySelector(".listen ul");
 
 
 //CREATE FUNCTION
@@ -71,7 +71,7 @@ var addTask = function() {
 };
 var addList = function() {
     var listenobjekt = createNewList(newList.value);
-    // ???? ToDoListen.appendChild(listenobjekt);
+    ToDoListen.appendChild(listenobjekt);
     newList.value = "";
 
 
