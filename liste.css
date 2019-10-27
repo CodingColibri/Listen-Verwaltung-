@@ -1,18 +1,218 @@
-body {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 5em 5em 5em;
-    grid-template-areas: " header" "hauptseite" " footer";
-    margin: 0%;
-    background-image: url("images/bg.jpg.jpg");
-}
-
-h1 {
-    color: white;
-    font-family: sans-serif;
-    font-size: 80px;
-    font-style: bold;
-    text-align: center;
-    opacity: 0.6;
-    ;
-}
+                        * {
+                            box-sizing: border-box;
+                        }
+                        
+                        body {
+                            display: grid;
+                            grid-template-columns: 1fr;
+                            grid-template-rows: 5em 5em 5em;
+                            grid-template-areas: " header" "hauptseite" " footer";
+                            margin: 0%;
+                            background-image: url("images/bg.jpg.jpg");
+                        }
+                        
+                        h1 {
+                            color: white;
+                            font-weight: 500;
+                            font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                            font-size: 60px;
+                            text-align: center;
+                        }
+                        /* bezieht sich auf das Plus Symbol (svg) und die Mülltonne */
+                        
+                        .noFill {
+                            fill: none;
+                        }
+                        
+                        .new-task-container button svg {
+                            width: 16px;
+                            height: 16px;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            margin: -8px 0 0 -8px;
+                        }
+                        
+                        .new-task-container button {
+                            width: 30px;
+                            height: 30px;
+                            position: absolute;
+                            z-index: 2;
+                            border-radius: 25px;
+                            background: rgba(255, 255, 255, 0.2);
+                            margin-left: -2.3em;
+                            border: 0px;
+                            box-shadow: none;
+                            outline: none;
+                            cursor: pointer;
+                        }
+                        /* Pluszeichen Farbe */
+                        
+                        .new-task-container button svg .fill {
+                            fill: black;
+                            opacity: 0.6;
+                        }
+                        
+                        .container {
+                            padding: 25px;
+                            max-width: 760px;
+                            margin: 25px auto;
+                            overflow: hidden;
+                            border-radius: 10px;
+                            font-family: sans-serif;
+                            color: black;
+                        }
+                        
+                        h2 {
+                            margin: 0;
+                            text-align: center;
+                            text-transform: uppercase;
+                            font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                            font-size: 20px;
+                            text-align: center;
+                            border-bottom: 1px solid white;
+                            padding: 0 0 10px;
+                        }
+                        
+                        #new-task {
+                            background: rgba(255, 255, 255, 0.2);
+                            width: 40%;
+                            height: 30px;
+                            font-weight: 400;
+                            text-indent: 18px;
+                            border-top-left-radius: 5px;
+                            border-bottom-left-radius: 25px;
+                            border-top-right-radius: 25px;
+                            border-bottom-right-radius: 25px;
+                            border-top-left-radius: 25px;
+                            border: 0px;
+                            box-shadow: none;
+                            outline: none;
+                            margin-left: 2em;
+                        }
+                        /*  noch eine mögliche Farbe : #606870  */
+                        
+                        #new-list {
+                            position: absolute;
+                            right: 7px;
+                            bottom: 7px;
+                            border-width: 0;
+                            outline: none;
+                            box-shadow: none;
+                            font-weight: 100;
+                            text-indent: 18px;
+                        }
+                        
+                        .new-list {
+                            color: black;
+                            background: white;
+                            opacity: 0.6;
+                            border: 3px solid transparent;
+                            display: block;
+                            height: 320px;
+                            width: 320px;
+                            position: absolute;
+                            bottom: 7px;
+                            right: 7px;
+                            border-radius: 5px;
+                            ;
+                        }
+                        
+                        .new-task-container {
+                            text-align: center;
+                            color: white;
+                            font-size: 90%;
+                            background: white;
+                            border: 3px solid transparent;
+                            opacity: 0.6;
+                        }
+                        
+                        .new-task-container input {
+                            color: black;
+                            opacity: 0.6;
+                            font-size: 20px;
+                        }
+                        
+                        .new-task-container input::-webkit-input-placeholder {
+                            color: black;
+                        }
+                        
+                        .box {
+                            padding: 10px 15px;
+                            border-radius: 5px;
+                            margin: 15px 0;
+                        }
+                        
+                        .todo-list {
+                            float: left;
+                            width: 46%;
+                            border: 3px solid white;
+                            color: white;
+                        }
+                        
+                        .complete-list {
+                            float: right;
+                            width: 46%;
+                            border: 3px solid white;
+                            color: white;
+                        }
+                        
+                        ul {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                        }
+                        
+                        li {
+                            padding: 10px;
+                            border-bottom: 1px dotted #CCC;
+                        }
+                        
+                        .delete {
+                            width: 28px;
+                            height: 28px;
+                            float: right;
+                            font-size: 0.7em;
+                            border-color: gray;
+                            border-top-left-radius: 5px;
+                            border-bottom-left-radius: 25px;
+                            border-top-right-radius: 25px;
+                            border-bottom-right-radius: 25px;
+                            border-top-left-radius: 25px;
+                            background: mistyrose;
+                            border: 1px solid white;
+                            padding: 5px;
+                            color: grey;
+                            margin-top: -0.4em;
+                            opacity: 0.8;
+                        }
+                        
+                        .delete:hover {
+                            background: lightcoral;
+                        }
+                        
+                        input {
+                            color: black;
+                            opacity: 0.6;
+                            width: 300px;
+                        }
+                        
+                        input[type=checkbox] {
+                            opacity: 0;
+                            margin-left: -32px;
+                            margin-top: 5px;
+                            width: 15px;
+                            height: 15px;
+                        }
+                        
+                        input[type="checkbox"]+label::before {
+                            width: 19px;
+                            height: 19px;
+                            border-radius: 15px;
+                            border: 1.5px solid cadetblue;
+                            background-color: lightblue;
+                            display: block;
+                            content: "";
+                            float: left;
+                            margin-right: 15px;
+                        }
