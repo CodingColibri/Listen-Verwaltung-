@@ -53,7 +53,7 @@ var createNewList = function(liste) {
     listenobjekt.appendChild(inhalt);
     return listenobjekt;
 
-}
+};
 
 //ADD THE NEW TASK INTO ACTUAL INCOMPLETE LIST
 var addTask = function() {
@@ -71,7 +71,7 @@ var addTask = function() {
 };
 var addList = function() {
     var listenobjekt = createNewList(newList.value);
-    ToDoListen.appendChild(listenobjekt);
+    // ???? ToDoListen.appendChild(listenobjekt);
     newList.value = "";
 
 
