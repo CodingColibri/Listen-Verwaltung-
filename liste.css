@@ -6,9 +6,32 @@
                             display: grid;
                             grid-template-columns: 1fr;
                             grid-template-rows: 5em 5em 5em;
-                            grid-template-areas: " header" "hauptseite" " footer";
                             margin: 0%;
                             background-image: url("images/bg.jpg.jpg");
+                        }
+                        /* Desktop Ansicht */
+                        
+                        .col-1 {
+                            /*Überschrift*/
+                            width: 100%;
+                        }
+                        
+                        .todo-list {
+                            /*to-do Liste */
+                            width: 47%;
+                            float: left;
+                        }
+                        
+                        .complete-list {
+                            /*Completed List */
+                            width: 47%;
+                            float: right;
+                        }
+                        
+                        .col-5 {
+                            /*Listenverwaltung*/
+                            width: 50%;
+                            float: right;
                         }
                         
                         h1 {
@@ -18,7 +41,52 @@
                             font-size: 60px;
                             text-align: center;
                         }
-                        /* bezieht sich auf das Plus Symbol (svg) und die Mülltonne */
+                        
+                        #new-task {
+                            background: rgba(255, 255, 255, 0.2);
+                            width: 40%;
+                            height: 30px;
+                            font-weight: 400;
+                            text-indent: 18px;
+                            border-top-left-radius: 5px;
+                            border-bottom-left-radius: 25px;
+                            border-top-right-radius: 25px;
+                            border-bottom-right-radius: 25px;
+                            border-top-left-radius: 25px;
+                            border: 0px;
+                            box-shadow: none;
+                            outline: none;
+                            margin-left: 2em;
+                        }
+                        /* Mobile Anicht*/
+                        
+                        @media only screen and (max-width: 768px) {
+                            h1 {
+                                font-size: 40px;
+                            }
+                            .col-1 {
+                                width: 100%;
+                            }
+                            .col-2 {
+                                width: 100%;
+                            }
+                            .todo-list {
+                                width: 100%;
+                            }
+                            .complete-list {
+                                width: 100%;
+                                float: left;
+                            }
+                            .col-5 {
+                                width: 100%;
+                            }
+                            #new-task {
+                                width: 80%;
+                            }
+                            .new-list {
+                                margin: 1px;
+                            }
+                        }
                         
                         .noFill {
                             fill: none;
@@ -54,9 +122,9 @@
                         }
                         
                         .container {
-                            padding: 25px;
+                            padding: 15px;
                             max-width: 760px;
-                            margin: 25px auto;
+                            margin: 10px auto;
                             overflow: hidden;
                             border-radius: 10px;
                             font-family: sans-serif;
@@ -73,29 +141,9 @@
                             border-bottom: 1px solid white;
                             padding: 0 0 10px;
                         }
-                        
-                        #new-task {
-                            background: rgba(255, 255, 255, 0.2);
-                            width: 40%;
-                            height: 30px;
-                            font-weight: 400;
-                            text-indent: 18px;
-                            border-top-left-radius: 5px;
-                            border-bottom-left-radius: 25px;
-                            border-top-right-radius: 25px;
-                            border-bottom-right-radius: 25px;
-                            border-top-left-radius: 25px;
-                            border: 0px;
-                            box-shadow: none;
-                            outline: none;
-                            margin-left: 2em;
-                        }
                         /*  noch eine mögliche Farbe : #606870  */
                         
                         #new-list {
-                            position: absolute;
-                            right: 7px;
-                            bottom: 7px;
                             border-width: 0;
                             outline: none;
                             box-shadow: none;
@@ -109,13 +157,18 @@
                             opacity: 0.6;
                             border: 3px solid transparent;
                             display: block;
-                            height: 320px;
+                            height: 250px;
                             width: 320px;
-                            position: absolute;
+                            position: relative;
+                            float: right;
                             bottom: 7px;
                             right: 7px;
                             border-radius: 5px;
                             ;
+                        }
+                        
+                        #addList {
+                            position: absolute;
                         }
                         
                         .new-task-container {
@@ -144,17 +197,17 @@
                         }
                         
                         .todo-list {
-                            float: left;
-                            width: 46%;
                             border: 3px solid white;
                             color: white;
                         }
                         
                         .complete-list {
-                            float: right;
-                            width: 46%;
                             border: 3px solid white;
                             color: white;
+                        }
+                        
+                        .listen ul {
+                            right: 250px;
                         }
                         
                         .listen {
@@ -163,6 +216,10 @@
                             float: right;
                             color: white;
                             margin: 0%;
+                            height: auto;
+                            position: absolute;
+                            top: 370px;
+                            right: 100px;
                         }
                         
                         ul {
