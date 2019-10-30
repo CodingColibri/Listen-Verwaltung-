@@ -147,3 +147,4 @@ for (var i = 0; i < completeUl.children.length; i++) {
 
 addTaskBtn.addEventListener("click", addTask);
 addListBtn.addEventListener("click", addList);
+//initial
