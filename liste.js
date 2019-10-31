@@ -9,9 +9,9 @@ var addTaskBtn = document.querySelector('#addTask');
 var newList = document.querySelector('#new-list')
 var addListBtn = document.querySelector('#addList')
 
-
 var toDoUl = document.querySelector(".todo-list ul");
 var completeUl = document.querySelector(".complete-list ul");
+
 var ToDoListen = document.querySelector(".listen ul");
 
 
@@ -47,7 +47,12 @@ var createNewList = function(liste) {
     var listenobjekt = document.createElement("li");
     var inhalt = document.createElement("label");
 
+    //Esra
+   // var text = document.createElement("input");
     inhalt.innerText = liste;
+    
+    //Esra
+    //text.type = "text";
 
     //Neue Liste hinzufügen
     listenobjekt.appendChild(inhalt);
@@ -55,7 +60,7 @@ var createNewList = function(liste) {
 
 };
 
-//ADD THE NEW TASK INTO ACTUAL INCOMPLETE LIST
+//ADD THE NEW TASK INTO ACTUAL TO-DO LIST
 var addTask = function() {
     //console.log("Adding task...");
     //FOR CLARITY, GRAB THE INPUTTED TEXT AND STORE IT IN A VAR
@@ -65,16 +70,16 @@ var addTask = function() {
     //CLEAR THE INPUT
     newTask.value = "";
 
-    //BIND THE NEW LIST ITEM TO THE INCOMPLETE LIST
+    //BIND THE NEW LIST ITEM TO THE TO-DO LIST
     bindIncompleteItems(listItem, completeTask);
-
 };
+
 var addList = function() {
     var listenobjekt = createNewList(newList.value);
     ToDoListen.appendChild(listenobjekt);
-    newList.value = "";
-
-
+    newList.value ="";
+    //Esra 
+    //bindListItems(listenobjekt, createNewList);
 };
 
 var completeTask = function() {
@@ -100,8 +105,6 @@ var completeTask = function() {
 
 };
 
-
-
 //DELETE TASK FUNCTIONS
 var deleteTask = function() {
     //console.log("Deleting task...");
@@ -111,6 +114,11 @@ var deleteTask = function() {
 
     ul.removeChild(listItem);
 };
+
+//Esra
+//var bindListItems = function (taskItem,checkBoxClick){
+   // var text = taskItem.querySelector("label");
+    //text.onchange = checkBoxClick;}
 
 //A FUNCTION THAT BINDS EACH OF THE ELEMENTS THE INCOMPLETE LIST
 var bindIncompleteItems = function(taskItem, checkBoxClick) {
@@ -135,6 +143,8 @@ var bindCompleteItems = function(taskItem, deleteButtonPress) {
     deleteButton.onclick = deleteButtonPress;
 
 };
+
+
 
 for (var i = 0; i < toDoUl.children.length; i++) {
     bindIncompleteItems(toDoUl.children[i], completeTask);
