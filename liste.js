@@ -48,9 +48,9 @@ var createNewList = function(liste) {
     var inhalt = document.createElement("label");
 
     //Esra
-   // var text = document.createElement("input");
+    // var text = document.createElement("input");
     inhalt.innerText = liste;
-    
+
     //Esra
     //text.type = "text";
 
@@ -75,12 +75,32 @@ var addTask = function() {
 };
 
 var addList = function() {
-    var listenobjekt = createNewList(newList.value);
-    ToDoListen.appendChild(listenobjekt);
-    newList.value ="";
+    var id = newList.value;
     //Esra 
     //bindListItems(listenobjekt, createNewList);
-};
+    //API 
+    fetch("https://shopping-lists-api.herokuapp.com/api/v1/lists/"  +  id).then(        function(antw)  {            
+        if  (antw.status  ==  200)  {             alert("yippie");     return  antw.json();             } 
+        else  {                 alert("Es ist ein Fehler beim Laden der Liste aufgetreten"  +  antw.status);             }        
+    }    ).then(        function(json)  {            
+        var  listenName  =  json["name"];            
+        var  newElement  =  document.createElement("button");            
+        newElement.className  =  'liste';            
+        newElement.id  =  json._id;            
+        newElement.addEventListener('click',                 function(event)  {                    
+            btns  =  header.getElementsByClassName("liste");                    
+            markieren();                    
+            showList(event.target.id);                
+        });            
+        //document.getElementById("elemente").appendChild(newElement);            
+        //showList(eingabe);        
+    }    );    
+    var listenobjekt = createNewList(newList.value);
+    ToDoListen.appendChild(listenobjekt);
+    newList.value = "";
+}
+
+
 
 var completeTask = function() {
 
@@ -117,8 +137,8 @@ var deleteTask = function() {
 
 //Esra
 //var bindListItems = function (taskItem,checkBoxClick){
-   // var text = taskItem.querySelector("label");
-    //text.onchange = checkBoxClick;}
+// var text = taskItem.querySelector("label");
+//text.onchange = checkBoxClick;}
 
 //A FUNCTION THAT BINDS EACH OF THE ELEMENTS THE INCOMPLETE LIST
 var bindIncompleteItems = function(taskItem, checkBoxClick) {
@@ -158,3 +178,5 @@ for (var i = 0; i < completeUl.children.length; i++) {
 addTaskBtn.addEventListener("click", addTask);
 addListBtn.addEventListener("click", addList);
 //initial
+
+// API Einbindung
