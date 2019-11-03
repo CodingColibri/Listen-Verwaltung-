@@ -82,22 +82,25 @@ var addList = function() {
     fetch("https://shopping-lists-api.herokuapp.com/api/v1/lists/"  +  id).then(        function(antw)  {            
         if  (antw.status  ==  200)  {             alert("yippie");     return  antw.json();             } 
         else  {                 alert("Es ist ein Fehler beim Laden der Liste aufgetreten"  +  antw.status);             }        
-    }    ).then(        function(json)  {            
-        var  listenName  =  json["name"];            
+    }    ).then(        function(json)  {     
+        alert("next step ok");       
+        var  listenName  =  json["name"];  
+        alert("Listen Name" + listenName);  
+        var listenobjekt = createNewList(listenName);
+        ToDoListen.appendChild(listenobjekt);
+        newList.value = "";       
         var  newElement  =  document.createElement("button");            
         newElement.className  =  'liste';            
         newElement.id  =  json._id;            
         newElement.addEventListener('click',                 function(event)  {                    
             btns  =  header.getElementsByClassName("liste");                    
             markieren();                    
-            showList(event.target.id);                
+            showList(event.target.id);              
         });            
         //document.getElementById("elemente").appendChild(newElement);            
         //showList(eingabe);        
     }    );    
-    var listenobjekt = createNewList(newList.value);
-    ToDoListen.appendChild(listenobjekt);
-    newList.value = "";
+
 }
 
 
