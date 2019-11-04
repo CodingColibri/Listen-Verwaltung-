@@ -57,11 +57,10 @@
                             box-shadow: none;
                             outline: none;
                             margin-left: 2em;
-
                         }
                         
                         #new-list {
-                            position: absolute;
+                            position: fixed;
                             bottom: 10px;
                             right: 10px;
                         }
@@ -70,6 +69,10 @@
                             position: absolute;
                             bottom: 10px;
                             right: 5px;
+                        }
+                        
+                        #verfListen {
+                            padding-right: -50px;
                         }
                         /* Mobile Anicht*/
                         
@@ -172,7 +175,7 @@
                             display: block;
                             height: 250px;
                             width: 320px;
-                            position: relative;
+                            position: fixed;
                             float: right;
                             bottom: 7px;
                             right: 7px;
@@ -215,7 +218,7 @@
                             color: white;
                         }
                         
-                        .listen  ul {
+                        .listen ul {
                             position: absolute;
                         }
                         
@@ -303,7 +306,7 @@
                             color: white;
                             font-family: "Mali", cursive;
                             text-transform: uppercase;
-                            font-size: 50px;    
+                            font-size: 50px;
                             text-align: center;
                             opacity: 0.6;
                             ;
@@ -317,10 +320,12 @@
                             left: 50%;
                             margin: -8px 0 0 -8px;
                         }
+                        
                         .new-list button svg .fill {
                             fill: black;
                             opacity: 0.7;
                         }
+                        
                         .new-list button {
                             width: 30px;
                             height: 30px;
@@ -334,4 +339,3 @@
                             outline: none;
                             cursor: pointer;
                         }
-                       

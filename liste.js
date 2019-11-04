@@ -13,8 +13,10 @@ var toDoUl = document.querySelector(".todo-list ul");
 var completeUl = document.querySelector(".complete-list ul");
 
 var ToDoListen = document.querySelector(".listen ul");
+var letzteID = 0;
+const url = 'https://shopping-lists-api.herokuapp.com/api/v1/lists/';
 
-
+var aktuelleListe = null;
 //CREATE FUNCTION
 
 //CREATING THE ACTUAL TASK LIST ITEM
@@ -24,18 +26,20 @@ var createNewTask = function(task) {
     var listItem = document.createElement("li"); //<li>
     var checkBox = document.createElement("input"); //checkbox
     var label = document.createElement("label"); // <label>
-
     //PULL THE INPUTED TEXT INTO LABEL
     //Inhalt wird durch den in der Variable task gespeicherten Text ersetzt
     label.innerText = task;
-
-
     //Eigenschaften  hinzufügen 
     checkBox.type = "checkbox";
 
     //ADD ITEMS TO THE LI
     listItem.appendChild(checkBox);
     listItem.appendChild(label);
+
+    //API -Post request 
+    //POST "https://shopping-lists-api.herokuapp.com/api/v1/lists/5da75757aaf7940017bcce98/items          
+
+
     //EVERYTHING PUT TOGETHER
     return listItem;
 
@@ -64,36 +68,62 @@ var createNewList = function(liste) {
 var addTask = function() {
     //console.log("Adding task...");
     //FOR CLARITY, GRAB THE INPUTTED TEXT AND STORE IT IN A VAR
-    var listItem = createNewTask(newTask.value);
-    //ADD THE NEW LIST ITEM TO LIST
-    toDoUl.appendChild(listItem);
-    //CLEAR THE INPUT
-    newTask.value = "";
+    if (aktuelleListe == null) {
+        alert("Bitte zuerst eine neue Liste hinzufügen.");
+        document.getElementById("new-task").value = "";
+    } else {
+        var listItem = createNewTask(newTask.value);
+        var task = newTask.value;
+        alert(task);
+        //ADD THE NEW LIST ITEM TO LIST
+        toDoUl.appendChild(listItem);
+        //CLEAR THE INPUT
+        newTask.value = "";
+        var imteid = imteid + 1;
+        var data = { "bought": false, "_id": "test-id", "name": task };
+        try {
+            const response = fetch(url + aktuelleListe + "/items", {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    "Accept": "application/json",
+                    "content-type": "application/json"
+                }
+            });
+            const json = response.json();
+            console.log("Erfolg");
+        } catch (e) {
 
-    //BIND THE NEW LIST ITEM TO THE TO-DO LIST
-    bindIncompleteItems(listItem, completeTask);
-};
+        }
+    }
+}
+
+
+
+//BIND THE NEW LIST ITEM TO THE TO-DO LIST
+//bindIncompleteItems(listItem, completeTask);
+//};
 
 var addList = function() {
     var id = newList.value;
+    aktuelleListe = id;
     //Esra 
     //bindListItems(listenobjekt, createNewList);
     //API 
     fetch("https://shopping-lists-api.herokuapp.com/api/v1/lists/"  +  id).then(        function(antw)  {            
         if  (antw.status  ==  200)  {             alert("yippie");     return  antw.json();             } 
         else  {                 alert("Es ist ein Fehler beim Laden der Liste aufgetreten"  +  antw.status);             }        
-    }    ).then(        function(json)  {     
-        alert("next step ok");       
+    }    ).then(        function(json)  {           
         var  listenName  =  json["name"];  
-        alert("Listen Name" + listenName);  
         var listenobjekt = createNewList(listenName);
         ToDoListen.appendChild(listenobjekt);
-        newList.value = "";       
+        newList.value = "";  
+        listeLaden(id);     
         var  newElement  =  document.createElement("button");            
         newElement.className  =  'liste';            
         newElement.id  =  json._id;            
         newElement.addEventListener('click',                 function(event)  {                    
-            btns  =  header.getElementsByClassName("liste");                    
+            btns  =  header.gestElementsByClassName("liste");                    
             markieren();                    
             showList(event.target.id);              
         });            
@@ -103,9 +133,32 @@ var addList = function() {
 
 }
 
+function listeLaden(id) {
+    alert(id);
+    fetch("https://shopping-lists-api.herokuapp.com/api/v1/lists/" + id).then(
+        function(antwort) {
+            //console.log(antwort.json());
+            return antwort.json();
+        }).then(function(json) {
+        console.log(json);
+        for (i = 0; i < Object.keys(json.items).length; i++) {
+            console.log(json["items"][i]["name"]);
+            var einItem = json["items"][i]["name"];
+            //var idItem = ["items"][i]["_id"];
+            var listItem = createNewTask(einItem);
+            toDoUl.appendChild(listItem);
+            // document.getElementById("ToDoU1").appendChild(listItem);
 
+        }
+    });
 
-var completeTask = function() {
+}
+
+//BIND THE NEW LIST ITEM TO THE TO-DO LIST
+//bindIncompleteItems(listItem, completeTask);
+//  }
+
+function completeTask() {
 
     //GRAB THE CHECKBOX'S PARENT ELEMENT, THE LI IT'S IN
     var listItem = this.parentNode;
@@ -126,7 +179,7 @@ var completeTask = function() {
     //BIND THE NEW COMPLETED LIST
     bindCompleteItems(listItem, deleteTask);
 
-};
+}
 
 //DELETE TASK FUNCTIONS
 var deleteTask = function() {
