@@ -24,20 +24,14 @@ var createNewTask = function(task) {
 
     //Neues To-do in der Liste
     var listItem = document.createElement("li"); //<li>
-    var checkBox = document.createElement("input"); //checkbox
     var label = document.createElement("label"); // <label>
     //PULL THE INPUTED TEXT INTO LABEL
     //Inhalt wird durch den in der Variable task gespeicherten Text ersetzt
     label.innerText = task;
     //Eigenschaften  hinzufügen 
-    checkBox.type = "checkbox";
 
     //ADD ITEMS TO THE LI
-    listItem.appendChild(checkBox);
     listItem.appendChild(label);
-
-    //API -Post request 
-    //POST "https://shopping-lists-api.herokuapp.com/api/v1/lists/5da75757aaf7940017bcce98/items          
 
 
     //EVERYTHING PUT TOGETHER
@@ -65,7 +59,7 @@ var createNewList = function(liste) {
 };
 
 //ADD THE NEW TASK INTO ACTUAL TO-DO LIST
-var addTask = function() {
+function addTask() {
     //console.log("Adding task...");
     //FOR CLARITY, GRAB THE INPUTTED TEXT AND STORE IT IN A VAR
     if (aktuelleListe == null) {
@@ -74,12 +68,10 @@ var addTask = function() {
     } else {
         var listItem = createNewTask(newTask.value);
         var task = newTask.value;
-        alert(task);
         //ADD THE NEW LIST ITEM TO LIST
         toDoUl.appendChild(listItem);
         //CLEAR THE INPUT
         newTask.value = "";
-        var imteid = imteid + 1;
         var data = { "bought": false, "_id": "test-id", "name": task };
         try {
             const response = fetch(url + aktuelleListe + "/items", {
@@ -97,12 +89,6 @@ var addTask = function() {
         }
     }
 }
-
-
-
-//BIND THE NEW LIST ITEM TO THE TO-DO LIST
-//bindIncompleteItems(listItem, completeTask);
-//};
 
 var addList = function() {
     var id = newList.value;
@@ -160,7 +146,6 @@ function listeLaden(id) {
 
 function completeTask() {
 
-    //GRAB THE CHECKBOX'S PARENT ELEMENT, THE LI IT'S IN
     var listItem = this.parentNode;
 
     //CREATE AND INSERT THE DELETE BUTTON
@@ -169,9 +154,7 @@ function completeTask() {
     deleteBtn.className = "delete";
     listItem.appendChild(deleteBtn);
 
-    //SELECT THE CHECKBOX FROM THE COMPLETED CHECKBOX AND REMOVE IT
-    var checkBox = listItem.querySelector("input[type=checkbox]");
-    checkBox.remove();
+
 
     //PLACE IT INSIDE THE COMPLETED LIST
     completeUl.appendChild(listItem);
@@ -192,19 +175,16 @@ var deleteTask = function() {
 };
 
 //Esra
-//var bindListItems = function (taskItem,checkBoxClick){
-// var text = taskItem.querySelector("label");
-//text.onchange = checkBoxClick;}
+bindListItems = function(taskItem, checkBoxClick) {
+    var text = taskItem.querySelector("label");
+    text.onchange = checkBoxClick;
+}
 
 //A FUNCTION THAT BINDS EACH OF THE ELEMENTS THE INCOMPLETE LIST
 var bindIncompleteItems = function(taskItem, checkBoxClick) {
     //console.log("Binding the incomplete list...");
 
-    //BIND THE CHECKBOX TO A VAR
-    var checkBox = taskItem.querySelector("input[type=checkbox]");
 
-    //SETUP EVENT LISTENER FOR THE CHECKBOX
-    checkBox.onchange = checkBoxClick;
 };
 
 
@@ -233,6 +213,3 @@ for (var i = 0; i < completeUl.children.length; i++) {
 
 addTaskBtn.addEventListener("click", addTask);
 addListBtn.addEventListener("click", addList);
-//initial
-
-// API Einbindung
