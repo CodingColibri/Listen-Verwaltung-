@@ -86,8 +86,10 @@ var evalTasklist = function() {
 var createNewList = function(liste) {
 
     //Neue Liste 
-    var listenobjekt = document.createElement("li");
-    var inhalt = document.createElement("label");
+    //var listenobjekt = document.createElement("li");
+    //var inhalt = document.createElement("label");
+    var neu = liste;
+    document.getElementById('aktuellesListe').innerHTML = neu;
     inhalt.setAttribute("id", "listenname");
 
     //Esra
@@ -324,23 +326,26 @@ var newID = function(task) {
 }
 
 
-(function () {
+(function() {
     function berechne() {
-      var jetzt = new Date(),
-        tag = jetzt.getDate(),
-        jahr = jetzt.getFullYear(),
-        tagZahl = jetzt.getDay(),
-        wochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag',
-          'Freitag', 'Samstag'],
-        monatZahl = jetzt.getMonth(),
-        monat = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli',
-          'August', 'September', 'Oktober', 'November', 'Dezember'],
-        text;
-      text =  wochentag[tagZahl] + " " + tag + '. ' + monat[
-        monatZahl] + " " + jahr;
-      document.getElementById('datumsausgabe')
-        .innerHTML = text;
+        var jetzt = new Date(),
+            tag = jetzt.getDate(),
+            jahr = jetzt.getFullYear(),
+            tagZahl = jetzt.getDay(),
+            wochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag',
+                'Freitag', 'Samstag'
+            ],
+            monatZahl = jetzt.getMonth(),
+            monat = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli',
+                'August', 'September', 'Oktober', 'November', 'Dezember'
+            ],
+            text;
+        text = wochentag[tagZahl] + " " + tag + '. ' + monat[
+            monatZahl] + " " + jahr;
+        document.getElementById('datumsausgabe')
+            .innerHTML = text;
     }
-    document.addEventListener("DOMContentLoaded", function () {
-      berechne();
-    }); }());
+    document.addEventListener("DOMContentLoaded", function() {
+        berechne();
+    });
+}());
