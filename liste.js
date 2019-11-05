@@ -19,25 +19,55 @@ const url = 'https://shopping-lists-api.herokuapp.com/api/v1/lists/';
 var aktuelleListe = null;
 //CREATE FUNCTION
 
+//Schließ Button-einfügen
+var meineListe = document.getElementsByTagName("li");
+var i;
+for (i = 0; i < meineListe.length; i++) {
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    meineListe[i].appendChild(span);
+}
+
 //CREATING THE ACTUAL TASK LIST ITEM
-var createNewTask = function(task) {
+var createNewTask = function(task, itemID) {
 
     //Neues To-do in der Liste
+
     var listItem = document.createElement("li"); //<li>
-    var label = document.createElement("label"); // <label>
-    //PULL THE INPUTED TEXT INTO LABEL
+    //var item = new Item();
+    var tskBx = document.createElement("input");
+    var label = document.createElement("label");
+    var dltBx = document.createElement("input");
+    tskBx.setAttribute("type", "checkbox");
+    dltBx.setAttribute("type", "checkbox");
+    var taskBtn = document.createElement("button");
+    taskTrsh = document.createElement("i");
+    taskTrsh.setAttribute("class", "fa fa-trash");
+    taskBtn.appendChild(taskTrsh);
+
+    listItem.appendChild(tskBx);
+    listItem.appendChild(label);
+    listItem.appendChild(taskBtn);
     //Inhalt wird durch den in der Variable task gespeicherten Text ersetzt
     label.innerText = task;
-    //Eigenschaften  hinzufügen 
-
-    //ADD ITEMS TO THE LI
-    listItem.appendChild(label);
-
-
-    //EVERYTHING PUT TOGETHER
+    this.evalTasklist;
+    tskBx.addEventListener("Change", erledigtTask);
+    taskBtn.addEventListener("click", delTask);
     return listItem;
 
 };
+var evalTasklist = function() {
+    var i, tskBx, dltBx;
+    for (i = 0; i < this.ToDoU1Children.length; i += 1) {
+        tskBxBox = this.ToDoU1Children[i].getElementsByTagName("input")[0];
+        tskBox.onclick = this.completeTask.bind(this, this.ToDoU1Children[i], tskBox);
+
+        taskBtn = this.ToDOu1Children[i].getElementsByTagName("button")[0];
+        taskBtn.onclick = this.delTask.bind(this, i);
+    }
+}
 
 var createNewList = function(liste) {
 
@@ -72,7 +102,8 @@ function addTask() {
         toDoUl.appendChild(listItem);
         //CLEAR THE INPUT
         newTask.value = "";
-        var data = { "bought": false, "_id": "test-id", "name": task };
+        var testid = newID(task);
+        var data = { "bought": false, "_id": "testID", "name": task };
         try {
             const response = fetch(url + aktuelleListe + "/items", {
                 method: 'POST',
@@ -80,9 +111,11 @@ function addTask() {
                 headers: {
                     "Accept": "application/json",
                     "content-type": "application/json"
+
                 }
             });
             const json = response.json();
+            alert("ok" + json);
             console.log("Erfolg");
         } catch (e) {
 
@@ -97,7 +130,7 @@ var addList = function() {
     //bindListItems(listenobjekt, createNewList);
     //API 
     fetch("https://shopping-lists-api.herokuapp.com/api/v1/lists/"  +  id).then(        function(antw)  {            
-        if  (antw.status  ==  200)  {             alert("yippie");     return  antw.json();             } 
+        if  (antw.status  ==  200)  {                 return  antw.json();             } 
         else  {                 alert("Es ist ein Fehler beim Laden der Liste aufgetreten"  +  antw.status);             }        
     }    ).then(        function(json)  {           
         var  listenName  =  json["name"];  
@@ -120,7 +153,7 @@ var addList = function() {
 }
 
 function listeLaden(id) {
-    alert(id);
+
     fetch("https://shopping-lists-api.herokuapp.com/api/v1/lists/" + id).then(
         function(antwort) {
             //console.log(antwort.json());
@@ -164,15 +197,7 @@ function completeTask() {
 
 }
 
-//DELETE TASK FUNCTIONS
-var deleteTask = function() {
-    //console.log("Deleting task...");
 
-    var listItem = this.parentNode;
-    var ul = listItem.parentNode;
-
-    ul.removeChild(listItem);
-};
 
 //Esra
 bindListItems = function(taskItem, checkBoxClick) {
@@ -202,6 +227,8 @@ var bindCompleteItems = function(taskItem, deleteButtonPress) {
 
 
 
+
+
 for (var i = 0; i < toDoUl.children.length; i++) {
     bindIncompleteItems(toDoUl.children[i], completeTask);
 }
@@ -213,3 +240,41 @@ for (var i = 0; i < completeUl.children.length; i++) {
 
 addTaskBtn.addEventListener("click", addTask);
 addListBtn.addEventListener("click", addList);
+
+
+var erledigtTask = function() {
+    alert("Task erledigt Bitch");
+}
+var delTask = function() {
+    // Item aus Liste löschen 
+    var listItem = this.parentNode;
+    var id = listItem.getElementsByTagName("label");
+    var ok = id[0];
+    var task = ok.textContent;
+    var ul = listItem.parentNode;
+    ul.removeChild(listItem);
+    // Item aus der API löschen 
+    var data = { "bought": false, "_id": id, "name": task };
+    var id = "5dbfea3e88156b0017b0ee76";
+    try {
+        const response = fetch(url + aktuelleListe + id, {
+            method: 'DELETE',
+            body: JSON.stringify(data),
+            headers: {
+                "Accept": "application/json",
+                "content-type": "application/json",
+                "api-key": cc8d75b283015bb4573bf734defe3a16
+            }
+        });
+        const json = response.json();
+        console.log("Erfolgreich gelöscht");
+    } catch (e) {
+
+    }
+
+
+};
+var newID = function(task) {
+    var id = task;
+    return id;
+}
