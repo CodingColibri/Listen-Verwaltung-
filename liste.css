@@ -343,6 +343,7 @@
                             border: 1px solid white;
                             padding: 5px;
                             color:grey;
+                            margin-right: 0.6em;
                         }
 
                         .todo-list button:hover{
