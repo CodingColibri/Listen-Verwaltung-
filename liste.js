@@ -279,15 +279,12 @@ var erledigtTask = function() {
 var delTask = function() {
     // Item aus Liste löschen 
     var listItem = this.parentNode;
-    console.log(listItem);
     var dings = listItem.children;
-    console.log(dings);
     var name = dings[2].innerHTML;
     var id = dings[4].innerHTML;
     console.log(name);
 
     //test = test.innerHTML;
-    alert("endetest");
     // var ok = id[0];
     //var task = ok.textContent;
     var ul = listItem.parentNode;
