@@ -16,8 +16,7 @@ var completeUl = document.querySelector(".complete-list ul");
 var ToDoListen = document.querySelector(".listen ul");
 var letzteID = 0;
 const url = 'https://shopping-lists-api.herokuapp.com/api/v1/lists/';
-var neuesObjektname;
-var neuesObjektID;
+
 
 var aktuelleListe = null;
 //CREATE FUNCTION
@@ -283,8 +282,10 @@ var delTask = function() {
     var listItem = this.parentNode;
     var dings = listItem.children;
     var name = dings[2].innerHTML;
+    console.log(dings);
     var id = dings[4].innerHTML;
     console.log(name);
+    console.log(id);
 
     //test = test.innerHTML;
     // var ok = id[0];
@@ -294,8 +295,12 @@ var delTask = function() {
     // Item aus der API löschen 
     var data = { "bought": false, "_id": id, "name": name };
     try {
-        alert(id + name);
-        const response = fetch(url + aktuelleListe + "/" + id, {
+        var request = new XMLHttpRequest();
+        console.log(id);
+        request.open('DELETE', url + aktuelleListe + "/items/" + id, true);
+        request.send();
+        //alert(id + name);
+        /*const response = fetch(url + aktuelleListe + "/" + id, {
             method: 'DELETE',
             body: JSON.stringify(data),
             headers: {
@@ -304,9 +309,9 @@ var delTask = function() {
                 "api-key": cc8d75b283015bb4573bf734defe3a16
             }
 
-        });
-        const json = response.json();
-        console.log("Erfolgreich gelöscht");
+        });*/
+        //const json = response.json();
+        //console.log("Erfolgreich gelöscht");
     } catch (e) {
         alert("fehler");
     }
