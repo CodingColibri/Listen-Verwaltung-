@@ -52,7 +52,7 @@ var createNewTask = function(task, itemID) {
     taskTrsh = document.createElement("i");
     taskTrsh.setAttribute("class", "fa fa-trash");
     taskBtn.appendChild(taskTrsh);
-    taskBtn.innerHTML = removeSVG; 
+    taskBtn.innerHTML = removeSVG;
 
     listItem.appendChild(completeBtn);
     listItem.appendChild(tskBx);
@@ -68,7 +68,7 @@ var createNewTask = function(task, itemID) {
     taskBtn.addEventListener("click", delTask);
     completeBtn.addEventListener("click", complTask);
     return listItem;
-    
+
 
 };
 var evalTasklist = function() {
@@ -204,6 +204,9 @@ function listeLaden(id) {
 //BIND THE NEW LIST ITEM TO THE TO-DO LIST
 //bindIncompleteItems(listItem, completeTask);
 //  }
+function complTask() {
+    alert("dostuff");
+};
 
 function completeTask() {
 
