@@ -13,7 +13,7 @@ var addListBtn = document.querySelector('#addList')
 var toDoUl = document.querySelector(".todo-list ul");
 var completeUl = document.querySelector(".complete-list ul");
 
-var ToDoListen = document.querySelector(".listen ul");
+
 var letzteID = 0;
 const url = 'https://shopping-lists-api.herokuapp.com/api/v1/lists/';
 
@@ -90,18 +90,10 @@ var createNewList = function(liste) {
     //var inhalt = document.createElement("label");
     var neu = liste;
     document.getElementById('aktuellesListe').innerHTML = neu;
-    inhalt.setAttribute("id", "listenname");
 
-    //Esra
-    // var text = document.createElement("input");
-    inhalt.innerText = liste;
 
-    //Esra
-    //text.type = "text";
 
     //Neue Liste hinzufügen
-    listenobjekt.appendChild(inhalt);
-    return listenobjekt;
 
 };
 
@@ -166,7 +158,7 @@ var addList = function() {
     }    ).then(        function(json)  {           
         var  listenName  =  json["name"];  
         var listenobjekt = createNewList(listenName);
-        ToDoListen.appendChild(listenobjekt);
+
         newList.value = "";  
         listeLaden(id);     
         var  newElement  =  document.createElement("button");            
