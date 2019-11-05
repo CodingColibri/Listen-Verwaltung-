@@ -48,11 +48,16 @@ var createNewTask = function(task, itemID) {
     tskBx.setAttribute("type", "checkbox");
     dltBx.setAttribute("type", "checkbox");
     var taskBtn = document.createElement("button");
+    var completeBtn = document.createElement("button");
     taskTrsh = document.createElement("i");
     taskTrsh.setAttribute("class", "fa fa-trash");
     taskBtn.appendChild(taskTrsh);
+<<<<<<< HEAD
     taskBtn.innerHTML = removeSVG; 
 
+=======
+    listItem.appendChild(completeBtn);
+>>>>>>> 80e2caf8c588bca6eb28ca816f140dfba696f63b
     listItem.appendChild(tskBx);
     listItem.appendChild(label);
     listItem.appendChild(taskBtn);
@@ -64,6 +69,7 @@ var createNewTask = function(task, itemID) {
     this.evalTasklist;
     tskBx.addEventListener("Change", erledigtTask);
     taskBtn.addEventListener("click", delTask);
+    completeBtn.addEventListener("click", complTask);
     return listItem;
     
 
