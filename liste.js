@@ -46,6 +46,7 @@ var createNewTask = function(task, itemID) {
     taskTrsh = document.createElement("i");
     taskTrsh.setAttribute("class", "fa fa-trash");
     taskBtn.appendChild(taskTrsh);
+    taskBtn.innerHTML = removeSVG; 
 
     listItem.appendChild(tskBx);
     listItem.appendChild(label);
@@ -56,6 +57,7 @@ var createNewTask = function(task, itemID) {
     tskBx.addEventListener("Change", erledigtTask);
     taskBtn.addEventListener("click", delTask);
     return listItem;
+    
 
 };
 var evalTasklist = function() {
@@ -74,6 +76,7 @@ var createNewList = function(liste) {
     //Neue Liste 
     var listenobjekt = document.createElement("li");
     var inhalt = document.createElement("label");
+    inhalt.setAttribute("id", "listenname");
 
     //Esra
     // var text = document.createElement("input");
