@@ -344,11 +344,15 @@
                             padding: 5px;
                             color:grey;
                             margin-right: 0.6em;
+                    
                         }
 
                         .todo-list button:hover{
                             background: lightcoral;
+                            transform: rotate(-20deg);
+                            
                           }
+                      
 
                         .new-list button {
                             width: 30px;

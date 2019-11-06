@@ -90,12 +90,8 @@ var createNewList = function(liste) {
     var inhalt = document.createElement("label");
     inhalt.setAttribute("id", "listenname");
 
-    //Esra
-    // var text = document.createElement("input");
+   
     inhalt.innerText = liste;
-
-    //Esra
-    //text.type = "text";
 
     //Neue Liste hinzufügen
     listenobjekt.appendChild(inhalt);
@@ -155,8 +151,7 @@ function addTask() {
 var addList = function() {
     var id = newList.value;
     aktuelleListe = id;
-    //Esra 
-    //bindListItems(listenobjekt, createNewList);
+   
     //API 
     fetch("https://shopping-lists-api.herokuapp.com/api/v1/lists/"  +  aktuelleListe).then(        function(antw)  {            
         if  (antw.status  ==  200)  {                 return  antw.json();             } 
@@ -323,7 +318,6 @@ var newID = function(task) {
     return id;
 }
 
-
 (function () {
     function berechne() {
       var jetzt = new Date(),
@@ -334,10 +328,8 @@ var newID = function(task) {
           'Freitag', 'Samstag'],
         monatZahl = jetzt.getMonth(),
         monat = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli',
-          'August', 'September', 'Oktober', 'November', 'Dezember'],
-        text;
-      text =  wochentag[tagZahl] + " " + tag + '. ' + monat[
-        monatZahl] + " " + jahr;
+          'August', 'September', 'Oktober', 'November', 'Dezember'],text;
+      text =  wochentag[tagZahl] + " " + tag + '. ' + monat[monatZahl] + " " + jahr;
       document.getElementById('datumsausgabe')
         .innerHTML = text;
     }
