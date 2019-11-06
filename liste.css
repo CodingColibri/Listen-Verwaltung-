@@ -1,218 +1,234 @@
-                        * {
-                            box-sizing: border-box;
-                        }
-                        
-                        body {
-                            display: grid;
-                            grid-template-columns: 1fr;
-                            grid-template-rows: 5em 5em 5em;
-                            margin: 0%;
-                            background-image: url("images/bg.jpg.jpg");
-                        }
-                        /* Desktop Ansicht */
-                        
-                        .col-1 {
-                            /*Überschrift*/
-                            width: 100%;
-                        }
-                        
-                        .todo-list {
-                            /*to-do Liste */
-                            width: 47%;
-                            float:left;
-                        }
-                        
-                      /*   .complete-list {
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5em 5em 5em;
+    margin: 0%;
+    background-image: url("images/bg.jpg.jpg");
+}
+
+
+/* Desktop Ansicht */
+
+h1 {
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 50px;
+    text-align: center;
+    opacity: 0.6;
+    ;
+}
+
+.col-1 {
+    /*Überschrift*/
+    width: 100%;
+}
+
+.todo-list {
+    /*to-do Liste */
+    width: 100%;
+}
+
+#durchstr {
+    color: pink;
+}
+
+
+/*   .complete-list {
                            
                             width: 47%;
                             float: right;
-                        } */ 
-                        
-                        .col-5 {
-                            /*Listenverwaltung*/
-                            width: 50%;
-                            float: right;
-                        }
-                        
-                        h1 {
-                            color: white;
-                            font-weight: 500;
-                            font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                            font-size: 60px;
-                            text-align: center;
-                        }
-                        
-                        #new-task {
-                            background: rgba(255, 255, 255, 0.2);
-                            width: 50%;
-                            height: 30px;
-                            font-weight: 400;
-                            text-indent: 18px;
-                            border-top-left-radius: 5px;
-                            border-bottom-left-radius: 25px;
-                            border-top-right-radius: 25px;
-                            border-bottom-right-radius: 25px;
-                            border-top-left-radius: 25px;
-                            border: 0px;
-                            box-shadow: none;
-                            outline: none;
-                            margin-left: 2em;
+                        } */
 
-                        }
-                        
-                        #new-list {
-                            position: absolute;
-                            bottom: 10px;
-                            right: 10px;
-                        }
-                        
-                        #addList {
-                            position: absolute;
-                            bottom: 10px;
-                            right: 5px;
-                        }
-                        /* Mobile Anicht*/
-                        
-                        @media only screen and (max-width: 768px) {
-                            h1 {
-                                font-size: 40px;
-                            }
-                            .col-1 {
-                                width: 100%;
-                            }
-                            .col-2 {
-                                width: 100%;
-                            }
-                            .todo-list {
-                                width: 100%;
-                            }
-                         /*   .complete-list {
+.col-5 {
+    /*Listenverwaltung*/
+    width: 50%;
+    float: right;
+}
+
+#new-task {
+    background: rgba(255, 255, 255, 0.2);
+    height: 30px;
+    font-weight: 400;
+    text-indent: 18px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    margin-left: 0em;
+}
+
+#new-list {
+    position: fixed;
+    bottom: 25px;
+    right: 10px;
+    font-size: 1em;
+}
+
+#addList {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+}
+
+
+/* Mobile Anicht*/
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+    }
+    .col-1 {
+        width: 100%;
+    }
+    .col-2 {
+        width: 100%;
+    }
+    .todo-list {
+        width: 100%;
+    }
+    /*   .complete-list {
                                 width: 100%;
                                 float: left;
-                            } */ 
-                            .col-5 {
-                                width: 100%;
-                            }
-                            #new-task {
-                                width: 80%;
-                            }
-                            .new-list {
-                                margin: 1px;
-                            }
-                        }
-                        
-                        .noFill {
-                            fill: none;
-                        }
-                        
-                        .new-task-container button svg {
-                            width: 16px;
-                            height: 16px;
-                            position: absolute;
-                            top: 50%;
-                            left: 50%;
-                            margin: -8px 0 0 -8px;
-                        }
-                        
-                        .new-task-container button {
-                            width: 30px;
-                            height: 30px;
-                            position: absolute;
-                            z-index: 2;
-                            border-radius: 25px;
-                            background: rgba(255, 255, 255, 0.2);
-                            margin-left: -2.3em;
-                            border: 0px;
-                            box-shadow: none;
-                            outline: none;
-                            cursor: pointer;
-                        }
-                        /* Pluszeichen Farbe */
-                        
-                        .new-task-container button svg .fill {
-                            fill: black;
-                            opacity: 0.6;
-                        }
-                        
-                        .container {
-                            padding: 15px;
-                            max-width: 760px;
-                            margin: 10px auto;
-                            overflow: hidden;
-                            border-radius: 10px;
-                            font-family: sans-serif;
-                            color: black;
-                        }
-                        
-                        h2 {
-                            margin: 0;
-                            text-align: center;
-                            text-transform: uppercase;
-                            font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                            font-size: 20px;
-                            text-align: center;
-                            border-bottom: 1px solid white;
-                            padding: 0 0 10px;
-                        }
-                        /*  noch eine mögliche Farbe : #606870  */
-                        
-                        #new-list {
-                            border-width: 0;
-                            outline: none;
-                            box-shadow: none;
-                            font-weight: 100;
-                            text-indent: 18px;
-                        }
-                        
-                        .new-list {
-                            color: black;
-                            background: white;
-                            opacity: 0.6;
-                            border: 3px solid transparent;
-                            display: block;
-                            height: 250px;
-                            width: 320px;
-                            position: relative;
-                            float: right;
-                            bottom: 7px;
-                            right: 7px;
-                            border-radius: 5px;
-                            ;
-                        }
-                        
-                        .new-task-container {
-                            text-align: center;
-                            color: white;
-                            font-size: 90%;
-                            background: white;
-                            border: 3px solid transparent;
-                            opacity: 0.6;
-                        }
-                        
-                        .new-task-container input {
-                            color: black;
-                            opacity: 0.6;
-                            font-size: 20px;
-                        }
-                        
-                        .new-task-container input::-webkit-input-placeholder {
-                            color: black;
-                        }
-                        
-                        .box {
-                            padding: 10px 15px;
-                            border-radius: 5px;
-                            margin: 15px 0;
-                        }
-                        
-                        .todo-list {
+                            } */
+    .col-5 {
+        width: 100%;
+    }
+    #new-task {
+        width: 100%;
+        margin: 0px;
+    }
+    .new-list {
+        margin: 1px;
+    }
+}
+
+.noFill {
+    fill: none;
+}
+
+.new-task-container button svg {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -8px 0 0 -8px;
+}
+
+.new-task-container button {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 2;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-left: -2.3em;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+/* Pluszeichen Farbe */
+
+.new-task-container button svg .fill {
+    fill: black;
+    opacity: 0.6;
+}
+
+.container {
+    padding: 15px;
+    max-width: 760px;
+    margin: 10px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    font-family: sans-serif;
+    color: black;
+}
+
+h2 {
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid white;
+    padding: 0 0 10px;
+}
+
+
+/*  noch eine mögliche Farbe : #606870  */
+
+#new-list {
+    border-width: 0;
+    outline: none;
+    box-shadow: none;
+    font-weight: 100;
+    text-indent: 18px;
+}
+
+.new-list {
+    color: black;
+    background: white;
+    opacity: 0.6;
+    border: 3px solid transparent;
+    display: block;
+    height: 55px;
+    width: 320px;
+    position: fixed;
+    float: right;
+    bottom: 7px;
+    right: 7px;
+    border-radius: 5px;
+    ;
+}
+
+.new-task-container {
+    text-align: center;
+    color: white;
+    font-size: 90%;
+    background: white;
+    border: 3px solid transparent;
+    opacity: 0.6;
+}
+
+.new-task-container input {
+    color: black;
+    opacity: 0.6;
+    font-size: 20px;
+}
+
+.new-task-container input::-webkit-input-placeholder {
+    color: black;
+}
+
+.box {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+.todo-list {
+    border: 3px solid white;
+    color: white;
+}
+
+
+/*      .complete-list {
                             border: 3px solid white;
                             color: white;
-                        }
-                        
-                    /*      .complete-list {
-                            border: 3px solid white;
-                            color: white;
+<<<<<<< HEAD
                         } */ 
                         
                         .listen  ul {
@@ -384,5 +400,168 @@
                             font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
                             text-align: center;
                             opacity: 0.7;
+=======
+                        } */
 
-                        }
+.listen ul {
+    position: absolute;
+}
+
+.listen {
+    font-family: sans-serif;
+    width: 30%;
+    float: right;
+    color: white;
+    margin: 0%;
+    height: auto;
+    position: absolute;
+    top: 600px;
+    right: 50px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px dotted #CCC;
+}
+
+li id {
+    color: transparent;
+}
+
+.delete {
+    width: 28px;
+    height: 28px;
+    float: right;
+    font-size: 0.7em;
+    border-color: gray;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    background: mistyrose;
+    border: 1px solid white;
+    padding: 5px;
+    color: grey;
+    margin-top: -0.4em;
+    opacity: 0.8;
+}
+
+.delete:hover {
+    background: lightcoral;
+}
+
+input {
+    color: black;
+    opacity: 0.6;
+    width: 300px;
+}
+
+input[type=checkbox] {
+    opacity: 0;
+    margin-left: -32px;
+    margin-top: 5px;
+    width: 15px;
+    height: 15px;
+    border: 1.5px solid cadetblue;
+    background-color: lightblue;
+    display: block;
+    content: "";
+    float: left;
+    margin-right: 15px;
+}
+
+input[type="checkbox"]+label::before {
+    width: 8px;
+    height: 8px;
+    border-radius: 15px;
+    border: 1.5px solid cadetblue;
+    background-color: lightblue;
+    display: block;
+    content: "";
+    float: left;
+    margin-right: 15px;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5em 5em 5em;
+    grid-template-areas: " header" "hauptseite" " footer";
+    margin: 0%;
+    background-image: url("images/bg.jpg.jpg");
+}
+
+.new-list button svg {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -8px 0 0 -8px;
+}
+
+.new-list button svg .fill {
+    fill: black;
+    opacity: 0.7;
+}
+
+.todo-list button {
+    width: 26px;
+    height: 26px;
+    float: right;
+    font-size: 0.7em;
+    border-color: gray;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    background: mistyrose;
+    border: 1px solid white;
+    padding: 5px;
+    color: grey;
+    margin-right: 0.6em;
+}
+
+.todo-list button:hover {
+    background: lightcoral;
+}
+
+.new-list button {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 2;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-left: -2.3em;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#listenname {
+    color: red;
+}
+
+.listeeinfügen {
+    color: red;
+    font-size: 14px;
+    margin-top: -0.4em;
+}
+>>>>>>> 12906084d40da7b8958a45851edc1ceb5bf45bab
+
+#datumsausgabe {
+    color: white;
+    font-size: 1.5em;
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    opacity: 0.7;
+}
